@@ -1,0 +1,172 @@
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('img/wolf.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 20, 0.72);
+    z-index: 0;
+}
+
+.machine {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(26, 26, 62, 0.92), rgba(15, 15, 42, 0.95));
+    border: 3px solid #4fc3f7;
+    border-radius: 20px;
+    padding: 30px 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(79, 195, 247, 0.5), 
+                0 0 80px rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(4px);
+}
+
+h1 {
+    color: #4fc3f7;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    text-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
+}
+
+.balance {
+    background: rgba(79, 195, 247, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    border: 1px solid rgba(79, 195, 247, 0.3);
+}
+
+#balance {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.reels {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    background: #000;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #333;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.reel {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    transition: transform 0.1s;
+}
+
+.reel.spinning {
+    animation: spinAnim 0.1s linear infinite;
+}
+
+@keyframes spinAnim {
+    0% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(-5px); }
+}
+
+.reel.win {
+    animation: winAnim 0.5s ease infinite;
+    box-shadow: 0 0 25px #ffd700;
+}
+
+@keyframes winAnim {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.result {
+    min-height: 50px;
+    font-size: 1.1em;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    white-space: pre-line;
+}
+
+.result.win {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.result.lose {
+    background: rgba(255, 80, 80, 0.15);
+    color: #ff8888;
+}
+
+button {
+    width: 100%;
+    background: linear-gradient(180deg, #4fc3f7, #2196f3);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background: #444;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.stats span {
+    color: #4fc3f7;
+    font-weight: bold;
+}
